@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 25th, Skii 🎂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #241726;
+    --ink-soft: #33223A;
+    --paper: #FAF0DE;
+    --paper-dim: #F0E4CC;
+    --butter: #F4C64B;
+    --coral: #FF6B57;
+    --lilac: #C6B4D6;
+    --lilac-dim: #9C86AD;
+    --line: rgba(250,240,222,0.14);
+    --radius: 14px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--ink);
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(244,198,75,0.10), transparent 40%),
+      radial-gradient(circle at 88% 82%, rgba(255,107,87,0.10), transparent 42%);
+    color: var(--paper);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  .wrap{
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- HERO ---------- */
+
+  header.hero{
+    padding: 72px 0 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lilac);
+    margin-bottom: 22px;
+  }
+  .eyebrow::before, .eyebrow::after{
+    content:"";
+    width: 22px;
+    height: 1px;
+    background: var(--lilac-dim);
+  }
+
+  h1{
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 8vw, 4.6rem);
+    line-height: 1.02;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+  h1 .num{
+    color: var(--butter);
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  .hero-sub{
+    max-width: 480px;
+    margin: 18px auto 0;
+    color: var(--lilac);
+    font-size: 1.05rem;
+  }
+
+  /* ---------- CAKE / SIGNATURE INTERACTION ---------- */
+
+  .cake-stage{
+    margin: 56px auto 8px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .cake{
+    position: relative;
+    width: min(320px, 82vw);
+  }
+
+  .candles{
+    display:flex;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: -4px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .candle{
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    width: 20px;
+  }
+  .candle:focus-visible{
+    outline: 2px solid var(--butter);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  .flame{
+    width: 10px;
+    height: 16px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: radial-gradient(circle at 50% 70%, #FFE9A8, var(--butter) 55%, var(--coral) 100%);
+    box-shadow: 0 0 10px 2px rgba(244,198,75,0.55);
+    transform-origin: bottom center;
+    animation: flicker 1.6s ease-in-out infinite;
+    transition: opacity .25s ease, transform .25s ease;
+    margin-bottom: 2px;
+  }
+  @keyframes flicker{
+    0%,100%{ transform: scaleY(1) rotate(-1deg); }
+    50%{ transform: scaleY(1.08) rotate(2deg); }
+  }
+
+  .stick{
+    width: 6px;
+    height: 34px;
+    background: repeating-linear-gradient(180deg, var(--paper) 0 6px, var(--coral) 6px 10px);
+    border-radius: 2px;
+  }
+
+  .candle.out .flame{
+    opacity: 0;
+    transform: scaleY(0.2);
+  }
+  .candle.out .smoke{
+    opacity: 1;
+  }
+
+  .smoke{
+    position:absolute;
+    top: -14px;
+    width: 3px;
+    height: 14px;
+    background: linear-gradient(180deg, rgba(198,180,214,0.5), transparent);
+    opacity: 0;
+    animation: rise 1.4s ease-out infinite;
+  }
+  @keyframes rise{
+    0%{ transform: translateY(0) scaleX(1); opacity: 0.6; }
+    100%{ transform: translateY(-18px) scaleX(2.2); opacity: 0; }
+  }
+
+  .cake-body{
+    background: linear-gradient(180deg, var(--coral), #E1543F);
+    border-radius: 10px 10px 4px 4px;
+    height: 64px;
+    position: relative;
+    box-shadow: 0 14px 30px -12px rgba(0,0,0,0.55);
+  }
+  .cake-body::before{
+    content:"";
+    position:absolute;
+    inset: 0 0 auto 0;
+    height: 16px;
+    background: var(--paper);
+    border-radius: 10px 10px 40% 40% / 10px 10px 100% 100%;
+  }
+  .cake-plate{
+    height: 10px;
+    width: 108%;
+    margin-left: -4%;
+    background: var(--ink-soft);
+    border-radius: 50%;
+    box-shadow: 0 2px 0 var(--line);
+  }
+
+  .wish-line{
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: var(--butter);
+    min-height: 34px;
+    text-align: center;
+  }
+  .cake-hint{
+    font-size: 13px;
+    color: var(--lilac-dim);
+    text-align: center;
+    margin-top: -12px;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+
+  section{ padding: 64px 0; }
+  section + section{ border-top: 1px solid var(--line); }
+
+  .section-head{
+    display:flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 34px;
+  }
+  .section-head h2{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    margin: 0;
+  }
+  .section-head .tag{
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--butter);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ---------- STICKER CARDS (Why 25 is amazing) ---------- */
+
+  .sticker-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 560px){
+    .sticker-grid{ grid-template-columns: 1fr; }
+  }
+
+  .sticker{
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    font-size: 1rem;
+    box-shadow: 0 10px 24px -14px rgba(0,0,0,0.6);
+    transition: transform .2s ease;
+  }
+  .sticker:nth-child(1){ transform: rotate(-1.6deg); }
+  .sticker:nth-child(2){ transform: rotate(1.2deg); }
+  .sticker:nth-child(3){ transform: rotate(1.6deg); }
+  .sticker:nth-child(4){ transform: rotate(-1.1deg); }
+  .sticker:hover{ transform: rotate(0deg) scale(1.02); }
+
+  .sticker .mark{
+    display:block;
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: var(--coral);
+    margin-bottom: 4px;
+  }
+
+  /* ---------- EXHIBITS (proof section) ---------- */
+
+  .exhibits{
+    display:flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .exhibit{
+    display:grid;
+    grid-template-columns: 84px 1fr;
+    gap: 20px;
+    align-items: start;
+    background: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  @media (max-width: 560px){
+    .exhibit{ grid-template-columns: 1fr; }
+  }
+
+  .exhibit .letter{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 2.6rem;
+    color: var(--lilac-dim);
+    line-height: 1;
+  }
+
+  .exhibit h3{
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--butter);
+  }
+  .exhibit p{
+    margin: 0;
+    color: var(--paper);
+    opacity: 0.92;
+  }
+  .verdict{
+    display:inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--coral);
+    font-weight: 700;
+  }
+
+  /* ---------- FOOTER / SIGNATURE ---------- */
+
+  footer{
+    padding: 56px 0 80px;
+    text-align: center;
+  }
+  .signoff{
+    font-family: 'Caveat', cursive;
+    font-size: 1.9rem;
+    color: var(--paper);
+  }
+  .signoff span{ color: var(--coral); }
+  .footer-note{
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--lilac-dim);
+  }
+
+  /* ---------- CONFETTI ---------- */
+  .confetti{
+    position: fixed;
+    top: -10px;
+    width: 8px;
+    height: 14px;
+    z-index: 50;
+    pointer-events: none;
+    animation: fall linear forwards;
+  }
+  @keyframes fall{
+    to{ transform: translateY(105vh) rotate(540deg); opacity: 0.9; }
+  }
+
+  /* ---------- LOCK SCREEN ---------- */
+
+  #page-content{ display: none; }
+
+  .lock-screen{
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 24px;
+    background: var(--ink);
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(244,198,75,0.10), transparent 40%),
+      radial-gradient(circle at 88% 82%, rgba(255,107,87,0.10), transparent 42%);
+  }
+
+  .lock-card{
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+  }
+
+  .lock-icon{
+    font-size: 2.2rem;
+    margin-bottom: 14px;
+    display:inline-block;
+    animation: wiggle 2.4s ease-in-out infinite;
+  }
+  @keyframes wiggle{
+    0%, 100%{ transform: rotate(-4deg); }
+    50%{ transform: rotate(4deg); }
+  }
+
+  .lock-card h2{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin: 0 0 8px;
+  }
+  .lock-card p{
+    color: var(--lilac);
+    font-size: 0.95rem;
+    margin: 0 0 26px;
+  }
+
+  .lock-form{
+    display:flex;
+    gap: 10px;
+  }
+
+  .lock-form input{
+    flex: 1;
+    background: var(--paper);
+    color: var(--ink);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color .15s ease;
+  }
+  .lock-form input:focus-visible{
+    border-color: var(--butter);
+  }
+
+  .lock-form button{
+    background: var(--coral);
+    color: var(--paper);
+    border: none;
+    border-radius: 10px;
+    padding: 0 18px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .lock-form button:hover{ background: #E1543F; }
+  .lock-form button:focus-visible{
+    outline: 2px solid var(--butter);
+    outline-offset: 3px;
+  }
+
+  .lock-error{
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--coral);
+    min-height: 18px;
+  }
+
+  .lock-card.shake{
+    animation: shake .4s ease;
+  }
+  @keyframes shake{
+    0%, 100%{ transform: translateX(0); }
+    25%{ transform: translateX(-8px); }
+    75%{ transform: translateX(8px); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .flame{ animation: none; }
+    .smoke{ animation: none; }
+    .confetti{ animation: none; display:none; }
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="lock-screen" id="lockScreen">
+  <div class="lock-card" id="lockCard">
+    <span class="lock-icon">🔒</span>
+    <h2>This one's private</h2>
+    <p>Enter the password to continue.</p>
+    <form class="lock-form" id="lockForm">
+      <input type="password" id="lockInput" placeholder="Password" aria-label="Password" autocomplete="off">
+      <button type="submit">Unlock</button>
+    </form>
+    <p class="lock-error" id="lockError"></p>
+  </div>
+</div>
+
+<div id="page-content">
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Change #01092001 | Quarter-Century Upgrade Successful</div>
+    <h1>Happy <span class="num">25th</span>,<br>Skii</h1>
+    <p class="hero-sub">Twenty-five isn't old — it's just the year the plot thickens. You're not aging, you're leveling up.</p>
+  </header>
+
+  <div class="cake-stage">
+    <div class="cake">
+      <div class="candles" id="candles"></div>
+      <div class="cake-body"></div>
+      <div class="cake-plate"></div>
+    </div>
+    <p class="wish-line" id="wishLine">Blow out the candles and make a wish.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Why 25 is amazing</h2>
+      <span class="tag">Facts, mostly</span>
+    </div>
+    <div class="sticker-grid">
+      <div class="sticker">
+        <span class="mark">01</span>
+        You're wise, but you still lose your mind over silly things. Rare combo.
+      </div>
+      <div class="sticker">
+        <span class="mark">02</span>
+        Your laugh hasn't dimmed a single watt since the day I met you.
+      </div>
+      <div class="sticker">
+        <span class="mark">03</span>
+        Pretty sure your best years are still stacked up ahead of you.
+      </div>
+      <div class="sticker">
+        <span class="mark">04</span>
+        Age is just a weird numbers game. Your soul is permanently stuck at a fun 18.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The evidence</h2>
+      <span class="tag">Proof you're still a kid</span>
+    </div>
+    <div class="exhibits">
+      <div class="exhibit">
+        <div class="letter">A</div>
+        <div>
+          <h3>The half-eaten plate</h3>
+          <p>You still can't finish your food. Not once. Not ever. A true child's move, and honestly kind of iconic.</p>
+          <span class="verdict">Case closed</span>
+        </div>
+      </div>
+      <div class="exhibit">
+        <div class="letter">B</div>
+        <div>
+          <h3>The terminal sprint</h3>
+          <p>Only someone with genuinely young energy chases a missed train or flight the way you do. Adults just rebook.</p>
+          <span class="verdict">No further questions</span>
+        </div>
+      </div>
+      <div class="exhibit">
+        <div class="letter">C</div>
+        <div>
+          <h3>The plot twists</h3>
+          <p>Strict plans are an old-person habit anyway. Your random, last-minute ideas keep everyone around you young too.</p>
+          <span class="verdict">Pattern confirmed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="signoff">with love, your <span>partner in crime</span> 🎈</p>
+  <p class="footer-note">happy 25th, Skii — go be brilliant.</p>
+</footer>
+
+</div><!-- /page-content -->
+
+<script>
+  const PASSWORD = 'skii';
+  const lockScreen = document.getElementById('lockScreen');
+  const lockCard = document.getElementById('lockCard');
+  const lockForm = document.getElementById('lockForm');
+  const lockInput = document.getElementById('lockInput');
+  const lockError = document.getElementById('lockError');
+  const pageContent = document.getElementById('page-content');
+
+  if (sessionStorage.getItem('skii-unlocked') === 'true'){
+    unlock();
+  }
+
+  lockForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (lockInput.value.trim().toLowerCase() === PASSWORD){
+      sessionStorage.setItem('skii-unlocked', 'true');
+      unlock();
+    } else {
+      lockError.textContent = "Nope, try again.";
+      lockCard.classList.remove('shake');
+      void lockCard.offsetWidth;
+      lockCard.classList.add('shake');
+      lockInput.value = '';
+      lockInput.focus();
+    }
+  });
+
+  function unlock(){
+    lockScreen.style.display = 'none';
+    pageContent.style.display = 'block';
+  }
+
+  const candleCount = 5;
+  const candlesEl = document.getElementById('candles');
+  const wishLine = document.getElementById('wishLine');
+  let blownOut = 0;
+
+  for (let i = 0; i < candleCount; i++){
+    const btn = document.createElement('button');
+    btn.className = 'candle';
+    btn.setAttribute('aria-label', 'Blow out candle ' + (i + 1));
+    btn.innerHTML = '<span class="flame"></span><span class="smoke"></span><span class="stick"></span>';
+    btn.addEventListener('click', () => {
+      if (btn.classList.contains('out')) return;
+      btn.classList.add('out');
+      blownOut++;
+      if (blownOut === 1){
+        wishLine.textContent = "One down. Keep going.";
+      } else if (blownOut < candleCount){
+        wishLine.textContent = "Almost there...";
+      } else {
+        wishLine.textContent = "Wish sent. It's already coming true. 🎂";
+        launchConfetti();
+      }
+    });
+    candlesEl.appendChild(btn);
+  }
+
+  function launchConfetti(){
+    const colors = ['#F4C64B', '#FF6B57', '#C6B4D6', '#FAF0DE'];
+    for (let i = 0; i < 90; i++){
+      const piece = document.createElement('div');
+      piece.className = 'confetti';
+      piece.style.left = Math.random() * 100 + 'vw';
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 5000);
+    }
+  }
+</script>
+
+</body>
+</html>
