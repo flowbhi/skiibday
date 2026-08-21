@@ -359,108 +359,6 @@
     to{ transform: translateY(105vh) rotate(540deg); opacity: 0.9; }
   }
 
-  /* ---------- LOCK SCREEN ---------- */
-
-  #page-content{ display: none; }
-
-  .lock-screen{
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding: 24px;
-    background: var(--ink);
-    background-image:
-      radial-gradient(circle at 12% 8%, rgba(244,198,75,0.10), transparent 40%),
-      radial-gradient(circle at 88% 82%, rgba(255,107,87,0.10), transparent 42%);
-  }
-
-  .lock-card{
-    width: 100%;
-    max-width: 360px;
-    text-align: center;
-  }
-
-  .lock-icon{
-    font-size: 2.2rem;
-    margin-bottom: 14px;
-    display:inline-block;
-    animation: wiggle 2.4s ease-in-out infinite;
-  }
-  @keyframes wiggle{
-    0%, 100%{ transform: rotate(-4deg); }
-    50%{ transform: rotate(4deg); }
-  }
-
-  .lock-card h2{
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: 1.6rem;
-    margin: 0 0 8px;
-  }
-  .lock-card p{
-    color: var(--lilac);
-    font-size: 0.95rem;
-    margin: 0 0 26px;
-  }
-
-  .lock-form{
-    display:flex;
-    gap: 10px;
-  }
-
-  .lock-form input{
-    flex: 1;
-    background: var(--paper);
-    color: var(--ink);
-    border: 2px solid transparent;
-    border-radius: 10px;
-    padding: 12px 14px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1rem;
-    outline: none;
-    transition: border-color .15s ease;
-  }
-  .lock-form input:focus-visible{
-    border-color: var(--butter);
-  }
-
-  .lock-form button{
-    background: var(--coral);
-    color: var(--paper);
-    border: none;
-    border-radius: 10px;
-    padding: 0 18px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: transform .15s ease, background .15s ease;
-  }
-  .lock-form button:hover{ background: #E1543F; }
-  .lock-form button:focus-visible{
-    outline: 2px solid var(--butter);
-    outline-offset: 3px;
-  }
-
-  .lock-error{
-    margin-top: 12px;
-    font-size: 13px;
-    color: var(--coral);
-    min-height: 18px;
-  }
-
-  .lock-card.shake{
-    animation: shake .4s ease;
-  }
-  @keyframes shake{
-    0%, 100%{ transform: translateX(0); }
-    25%{ transform: translateX(-8px); }
-    75%{ transform: translateX(8px); }
-  }
-
   @media (prefers-reduced-motion: reduce){
     .flame{ animation: none; }
     .smoke{ animation: none; }
@@ -470,21 +368,6 @@
 </style>
 </head>
 <body>
-
-<div class="lock-screen" id="lockScreen">
-  <div class="lock-card" id="lockCard">
-    <span class="lock-icon">🔒</span>
-    <h2>This one's private</h2>
-    <p>Enter the password to continue.</p>
-    <form class="lock-form" id="lockForm">
-      <input type="password" id="lockInput" placeholder="Password" aria-label="Password" autocomplete="off">
-      <button type="submit">Unlock</button>
-    </form>
-    <p class="lock-error" id="lockError"></p>
-  </div>
-</div>
-
-<div id="page-content">
 
 <div class="wrap">
   <header class="hero">
@@ -570,41 +453,7 @@
   <p class="footer-note">happy 25th, Skii — go be brilliant.</p>
 </footer>
 
-</div><!-- /page-content -->
-
 <script>
-  const PASSWORD = 'skii';
-  const lockScreen = document.getElementById('lockScreen');
-  const lockCard = document.getElementById('lockCard');
-  const lockForm = document.getElementById('lockForm');
-  const lockInput = document.getElementById('lockInput');
-  const lockError = document.getElementById('lockError');
-  const pageContent = document.getElementById('page-content');
-
-  if (sessionStorage.getItem('skii-unlocked') === 'true'){
-    unlock();
-  }
-
-  lockForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (lockInput.value.trim().toLowerCase() === PASSWORD){
-      sessionStorage.setItem('skii-unlocked', 'true');
-      unlock();
-    } else {
-      lockError.textContent = "Nope, try again.";
-      lockCard.classList.remove('shake');
-      void lockCard.offsetWidth;
-      lockCard.classList.add('shake');
-      lockInput.value = '';
-      lockInput.focus();
-    }
-  });
-
-  function unlock(){
-    lockScreen.style.display = 'none';
-    pageContent.style.display = 'block';
-  }
-
   const candleCount = 5;
   const candlesEl = document.getElementById('candles');
   const wishLine = document.getElementById('wishLine');
