@@ -1,500 +1,313 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy 25th, Skii 🎂</title>
+<title>Shubhada Revankar · Product Manager</title>
+<meta name="description" content="Shubhada Revankar: business analyst moving into product management. Case studies in platform simplification, stakeholder alignment and product thinking.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink: #241726;
-    --ink-soft: #33223A;
-    --paper: #FAF0DE;
-    --paper-dim: #F0E4CC;
-    --butter: #F4C64B;
-    --coral: #FF6B57;
-    --lilac: #C6B4D6;
-    --lilac-dim: #9C86AD;
-    --line: rgba(250,240,222,0.14);
-    --radius: 14px;
+    --bg:#FAF6EF; --surface:#FFFFFF; --ink:#1E1B18; --muted:#6B635A;
+    --line:#E6DED2; --accent:#C2502E; --accent-soft:#F6E3DA; --deep:#1F3A3D;
+    --serif:'Fraunces', Georgia, serif; --sans:'Inter', system-ui, -apple-system, sans-serif;
+    --max:1080px;
   }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 
-  *{ box-sizing: border-box; }
+  /* Nav */
+  nav{position:sticky;top:0;z-index:10;background:rgba(250,246,239,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:var(--serif);font-weight:700;font-size:20px;text-decoration:none}
+  .logo span{color:var(--accent)}
+  nav ul{display:flex;gap:28px;list-style:none}
+  nav ul a{text-decoration:none;font-size:15px;color:var(--muted);font-weight:500}
+  nav ul a:hover{color:var(--ink)}
 
-  html{ scroll-behavior: smooth; }
+  /* Hero */
+  .hero{padding:110px 0 90px}
+  .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:20px}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(38px,6vw,68px);line-height:1.08;letter-spacing:-.02em;max-width:900px}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero p.lede{margin-top:28px;font-size:20px;color:var(--muted);max-width:640px}
+  .cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;border:1.5px solid var(--ink);transition:all .2s}
+  .btn.primary{background:var(--ink);color:var(--bg)}
+  .btn.primary:hover{background:var(--accent);border-color:var(--accent)}
+  .btn:hover{transform:translateY(-1px)}
 
-  body{
-    margin:0;
-    background: var(--ink);
-    background-image:
-      radial-gradient(circle at 12% 8%, rgba(244,198,75,0.10), transparent 40%),
-      radial-gradient(circle at 88% 82%, rgba(255,107,87,0.10), transparent 42%);
-    color: var(--paper);
-    font-family: 'Space Grotesk', sans-serif;
-    line-height: 1.5;
-    overflow-x: hidden;
-  }
+  section{padding:90px 0;border-top:1px solid var(--line)}
+  .section-head{display:flex;align-items:baseline;gap:18px;margin-bottom:44px}
+  .section-head .num{font-family:var(--serif);color:var(--accent);font-size:18px}
+  .section-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4vw,42px);letter-spacing:-.01em}
 
-  .wrap{
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:60px}
+  .about-grid p{margin-bottom:18px}
+  .journey{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .journey h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+  .step{display:flex;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line)}
+  .step:last-child{border:none}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--line);margin-top:8px;flex-shrink:0}
+  .step.now .dot{background:var(--accent)}
+  .step strong{display:block;font-weight:600}
+  .step small{color:var(--muted);font-size:14px}
 
-  /* ---------- HERO ---------- */
+  /* Featured case study */
+  .case{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+  .case-top{background:var(--deep);color:#F3EEE6;padding:44px}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .tag{font-size:12px;font-weight:600;letter-spacing:.04em;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.12)}
+  .case-top h3{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,36px);line-height:1.2;max-width:760px}
+  .case-top .meta{margin-top:12px;opacity:.75;font-size:15px}
+  .tldr{padding:32px 44px;background:var(--accent-soft);font-size:17px}
+  .tldr b{color:var(--accent)}
+  details{border-top:1px solid var(--line)}
+  summary{cursor:pointer;list-style:none;padding:22px 44px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:'+';font-size:24px;color:var(--accent);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  .case-body{padding:0 44px 44px;max-width:820px}
+  .case-body h4{font-family:var(--serif);font-size:22px;font-weight:600;margin:34px 0 12px}
+  .case-body h4:first-child{margin-top:4px}
+  .case-body p{margin-bottom:14px}
+  .case-body ul{padding-left:20px;margin-bottom:14px}
+  .case-body li{margin-bottom:8px}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+  .split div{border:1px solid var(--line);border-radius:12px;padding:18px;font-size:15px}
+  .split .no{background:#FBF7F2}
+  .split .yes{background:#EEF4F2;border-color:#CFE0DB}
+  .split b{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+  .split .no b{color:var(--muted)} .split .yes b{color:var(--deep)}
+  blockquote{border-left:3px solid var(--accent);padding:6px 0 6px 20px;font-family:var(--serif);font-size:21px;line-height:1.45;margin:10px 0 16px}
 
-  header.hero{
-    padding: 72px 0 40px;
-    text-align: center;
-    position: relative;
-  }
+  /* Projects grid */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:30px;display:flex;flex-direction:column;transition:transform .2s, box-shadow .2s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(30,27,24,.06)}
+  .card .kind{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .card h3{font-family:var(--serif);font-size:24px;font-weight:600;margin:10px 0}
+  .card p{color:var(--muted);font-size:16px;flex:1}
+  .status{margin-top:20px;font-size:13px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .status::before{content:'';width:8px;height:8px;border-radius:50%;background:#E0A84B}
 
-  .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-size: 13px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--lilac);
-    margin-bottom: 22px;
-  }
-  .eyebrow::before, .eyebrow::after{
-    content:"";
-    width: 22px;
-    height: 1px;
-    background: var(--lilac-dim);
-  }
+  /* Beyond work */
+  .beyond{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .beyond .card{min-height:220px}
+  .photo-slot{height:160px;border-radius:12px;background:repeating-linear-gradient(45deg,#F1EBE1,#F1EBE1 10px,#EAE2D5 10px,#EAE2D5 20px);margin-bottom:18px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
 
-  h1{
-    font-family: 'Fraunces', serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-size: clamp(2.6rem, 8vw, 4.6rem);
-    line-height: 1.02;
-    margin: 0 0 6px;
-    letter-spacing: -0.01em;
-  }
-  h1 .num{
-    color: var(--butter);
-    font-style: italic;
-    font-weight: 600;
-  }
+  /* Contact */
+  .contact{text-align:center;padding:110px 0}
+  .contact h2{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5vw,54px);letter-spacing:-.02em}
+  .contact p{color:var(--muted);margin:16px auto 34px;max-width:520px}
+  .contact .cta{justify-content:center}
+  footer{border-top:1px solid var(--line);padding:28px 0;font-size:14px;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
-  .hero-sub{
-    max-width: 480px;
-    margin: 18px auto 0;
-    color: var(--lilac);
-    font-size: 1.05rem;
-  }
-
-  /* ---------- CAKE / SIGNATURE INTERACTION ---------- */
-
-  .cake-stage{
-    margin: 56px auto 8px;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 22px;
-  }
-
-  .cake{
-    position: relative;
-    width: min(320px, 82vw);
-  }
-
-  .candles{
-    display:flex;
-    justify-content: center;
-    gap: 22px;
-    margin-bottom: -4px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .candle{
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    width: 20px;
-  }
-  .candle:focus-visible{
-    outline: 2px solid var(--butter);
-    outline-offset: 4px;
-    border-radius: 4px;
-  }
-
-  .flame{
-    width: 10px;
-    height: 16px;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    background: radial-gradient(circle at 50% 70%, #FFE9A8, var(--butter) 55%, var(--coral) 100%);
-    box-shadow: 0 0 10px 2px rgba(244,198,75,0.55);
-    transform-origin: bottom center;
-    animation: flicker 1.6s ease-in-out infinite;
-    transition: opacity .25s ease, transform .25s ease;
-    margin-bottom: 2px;
-  }
-  @keyframes flicker{
-    0%,100%{ transform: scaleY(1) rotate(-1deg); }
-    50%{ transform: scaleY(1.08) rotate(2deg); }
-  }
-
-  .stick{
-    width: 6px;
-    height: 34px;
-    background: repeating-linear-gradient(180deg, var(--paper) 0 6px, var(--coral) 6px 10px);
-    border-radius: 2px;
-  }
-
-  .candle.out .flame{
-    opacity: 0;
-    transform: scaleY(0.2);
-  }
-  .candle.out .smoke{
-    opacity: 1;
-  }
-
-  .smoke{
-    position:absolute;
-    top: -14px;
-    width: 3px;
-    height: 14px;
-    background: linear-gradient(180deg, rgba(198,180,214,0.5), transparent);
-    opacity: 0;
-    animation: rise 1.4s ease-out infinite;
-  }
-  @keyframes rise{
-    0%{ transform: translateY(0) scaleX(1); opacity: 0.6; }
-    100%{ transform: translateY(-18px) scaleX(2.2); opacity: 0; }
-  }
-
-  .cake-body{
-    background: linear-gradient(180deg, var(--coral), #E1543F);
-    border-radius: 10px 10px 4px 4px;
-    height: 64px;
-    position: relative;
-    box-shadow: 0 14px 30px -12px rgba(0,0,0,0.55);
-  }
-  .cake-body::before{
-    content:"";
-    position:absolute;
-    inset: 0 0 auto 0;
-    height: 16px;
-    background: var(--paper);
-    border-radius: 10px 10px 40% 40% / 10px 10px 100% 100%;
-  }
-  .cake-plate{
-    height: 10px;
-    width: 108%;
-    margin-left: -4%;
-    background: var(--ink-soft);
-    border-radius: 50%;
-    box-shadow: 0 2px 0 var(--line);
-  }
-
-  .wish-line{
-    font-family: 'Caveat', cursive;
-    font-size: 1.5rem;
-    color: var(--butter);
-    min-height: 34px;
-    text-align: center;
-  }
-  .cake-hint{
-    font-size: 13px;
-    color: var(--lilac-dim);
-    text-align: center;
-    margin-top: -12px;
-  }
-
-  /* ---------- SECTION HEADERS ---------- */
-
-  section{ padding: 64px 0; }
-  section + section{ border-top: 1px solid var(--line); }
-
-  .section-head{
-    display:flex;
-    align-items: baseline;
-    gap: 14px;
-    margin-bottom: 34px;
-  }
-  .section-head h2{
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: clamp(1.5rem, 4vw, 2.1rem);
-    margin: 0;
-  }
-  .section-head .tag{
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink);
-    background: var(--butter);
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  /* ---------- STICKER CARDS (Why 25 is amazing) ---------- */
-
-  .sticker-grid{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  @media (max-width: 560px){
-    .sticker-grid{ grid-template-columns: 1fr; }
-  }
-
-  .sticker{
-    background: var(--paper);
-    color: var(--ink);
-    border-radius: var(--radius);
-    padding: 20px 22px;
-    font-size: 1rem;
-    box-shadow: 0 10px 24px -14px rgba(0,0,0,0.6);
-    transition: transform .2s ease;
-  }
-  .sticker:nth-child(1){ transform: rotate(-1.6deg); }
-  .sticker:nth-child(2){ transform: rotate(1.2deg); }
-  .sticker:nth-child(3){ transform: rotate(1.6deg); }
-  .sticker:nth-child(4){ transform: rotate(-1.1deg); }
-  .sticker:hover{ transform: rotate(0deg) scale(1.02); }
-
-  .sticker .mark{
-    display:block;
-    font-family: 'Caveat', cursive;
-    font-size: 1.5rem;
-    color: var(--coral);
-    margin-bottom: 4px;
-  }
-
-  /* ---------- EXHIBITS (proof section) ---------- */
-
-  .exhibits{
-    display:flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .exhibit{
-    display:grid;
-    grid-template-columns: 84px 1fr;
-    gap: 20px;
-    align-items: start;
-    background: var(--ink-soft);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 20px;
-  }
-  @media (max-width: 560px){
-    .exhibit{ grid-template-columns: 1fr; }
-  }
-
-  .exhibit .letter{
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 2.6rem;
-    color: var(--lilac-dim);
-    line-height: 1;
-  }
-
-  .exhibit h3{
-    margin: 0 0 6px;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--butter);
-  }
-  .exhibit p{
-    margin: 0;
-    color: var(--paper);
-    opacity: 0.92;
-  }
-  .verdict{
-    display:inline-block;
-    margin-top: 10px;
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--coral);
-    font-weight: 700;
-  }
-
-  /* ---------- FOOTER / SIGNATURE ---------- */
-
-  footer{
-    padding: 56px 0 80px;
-    text-align: center;
-  }
-  .signoff{
-    font-family: 'Caveat', cursive;
-    font-size: 1.9rem;
-    color: var(--paper);
-  }
-  .signoff span{ color: var(--coral); }
-  .footer-note{
-    margin-top: 10px;
-    font-size: 13px;
-    color: var(--lilac-dim);
-  }
-
-  /* ---------- CONFETTI ---------- */
-  .confetti{
-    position: fixed;
-    top: -10px;
-    width: 8px;
-    height: 14px;
-    z-index: 50;
-    pointer-events: none;
-    animation: fall linear forwards;
-  }
-  @keyframes fall{
-    to{ transform: translateY(105vh) rotate(540deg); opacity: 0.9; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .flame{ animation: none; }
-    .smoke{ animation: none; }
-    .confetti{ animation: none; display:none; }
-    html{ scroll-behavior: auto; }
+  @media (max-width:800px){
+    nav ul{display:none}
+    .about-grid,.grid,.beyond,.split{grid-template-columns:1fr}
+    .hero{padding:70px 0 60px}
+    section{padding:64px 0}
+    .case-top,.tldr{padding:30px 24px}
+    summary{padding:20px 24px}
+    .case-body{padding:0 24px 30px}
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header class="hero">
-    <div class="eyebrow">Change #01092001 | Quarter-Century Upgrade Successful</div>
-    <h1>Happy <span class="num">25th</span>,<br>Skii</h1>
-    <p class="hero-sub">Twenty-five isn't old — it's just the year the plot thickens. You're not aging, you're leveling up.</p>
-  </header>
-
-  <div class="cake-stage">
-    <div class="cake">
-      <div class="candles" id="candles"></div>
-      <div class="cake-body"></div>
-      <div class="cake-plate"></div>
-    </div>
-    <p class="wish-line" id="wishLine">Blow out the candles and make a wish.</p>
-  </div>
-</div>
-
-<section>
+<nav>
   <div class="wrap">
-    <div class="section-head">
-      <h2>Why 25 is amazing</h2>
-      <span class="tag">Facts, mostly</span>
+    <a href="#top" class="logo">Shubhada<span>.</span></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#beyond">Beyond work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Product Manager · Bangalore</div>
+    <h1>I find the <em>real</em> problem behind the request, then build what actually solves it.</h1>
+    <p class="lede">Engineer by training, business analyst at Societe Generale by trade, now moving into product management. I turn messy systems and competing stakeholder asks into clear, standards-first decisions.</p>
+    <div class="cta">
+      <a href="#work" class="btn primary">See my work</a>
+      <a href="#contact" class="btn">Get in touch</a>
     </div>
-    <div class="sticker-grid">
-      <div class="sticker">
-        <span class="mark">01</span>
-        You're wise, but you still lose your mind over silly things. Rare combo.
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><span class="num">01</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div>
+        <p>I started out as an engineer, and that still shapes how I work: I want to understand how a system actually behaves before I decide what to change.</p>
+        <p>For the past three years I've been a business analyst at Societe Generale, working on the platform that processes messages and files for an entire business line. I've worked on the penalties team, on file transmission, and now on simplifying how our platform serves downstream applications.</p>
+        <p>The part of the job I enjoy most is the product part: asking <em>why</em> a request exists, weighing trade-offs, and getting different teams to agree on a direction. That's why I'm moving into product management.</p>
       </div>
-      <div class="sticker">
-        <span class="mark">02</span>
-        Your laugh hasn't dimmed a single watt since the day I met you.
+      <aside class="journey">
+        <h3>The journey</h3>
+        <div class="step"><span class="dot"></span><div><strong>Engineering</strong><small>Systems thinking and problem solving</small></div></div>
+        <div class="step"><span class="dot"></span><div><strong>Business Analyst, Societe Generale</strong><small>Penalties, file transmission and messaging platforms</small></div></div>
+        <div class="step now"><span class="dot"></span><div><strong>Product Manager</strong><small>Where I'm headed</small></div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head"><span class="num">02</span><h2>Featured work</h2></div>
+
+    <article class="case">
+      <div class="case-top">
+        <div class="tags">
+          <span class="tag">Platform strategy</span>
+          <span class="tag">Stakeholder alignment</span>
+          <span class="tag">ISO 20022</span>
+          <span class="tag">Test strategy</span>
+        </div>
+        <h3>Getting a bank's messaging platform back to the standard</h3>
+        <div class="meta">Societe Generale · Business Analyst · DFP message processing platform</div>
       </div>
-      <div class="sticker">
-        <span class="mark">03</span>
-        Pretty sure your best years are still stacked up ahead of you.
+
+      <div class="tldr"><b>TL;DR:</b> Downstream applications had piled team-specific rules into our bank-wide messaging platform over the years, which made market updates and client onboarding harder. My analysis showed that the planned fix would only move the problem somewhere else. I proposed a standards-first design instead, got the downstream team to agree to it, and set up the testing strategy for the build.</div>
+
+      <details>
+        <summary>Read the full case study</summary>
+        <div class="case-body">
+          <h4>Context</h4>
+          <p>DFP is the message-processing platform my team runs for an entire business line. It handles a wide range of formats, including ISO 20022 messages (such as pacs and reda), SWIFT MT, JSON, CSV, Excel and flat text files, carrying transaction notifications and internal files between the bank's applications, external clients and internal teams. For SWIFT traffic, it uses Prowide's converter API to translate between MT and ISO 20022 (MX) formats in both directions.</p>
+
+          <h4>The problem</h4>
+          <p>Over time, downstream applications asked for their own variations of the standard. For example, the penalties application (PIM) needed certain fields filled with its own values instead of the standard ones, so DFP added hardcoded, team-specific logic to reshape messages before delivering them.</p>
+          <p>This worked, but it didn't scale:</p>
+          <ul>
+            <li><strong>Yearly SWIFT releases got harder.</strong> Every market-standard update had to be checked against a growing pile of custom rules.</li>
+            <li><strong>Client onboarding went against the standard.</strong> Instead of accepting standard messages, we sometimes had to ask new clients to send our custom format.</li>
+            <li><strong>Everyone felt the pain.</strong> Developers maintained fragile logic, downstream teams depended on DFP for every change, and clients faced extra friction.</li>
+          </ul>
+
+          <h4>What I did</h4>
+          <ul>
+            <li><strong>Audited our mapping sheets</strong> to find every field where DFP applied a custom rule.</li>
+            <li><strong>Validated each rule with the PIM team</strong> to understand why it existed and what would break without it.</li>
+            <li><strong>Checked each rule against the ISO standards</strong> to see where we had drifted from market practice.</li>
+            <li><strong>Ran a feasibility analysis</strong> on whether Prowide could implement these rules in its converter API without data loss.</li>
+          </ul>
+
+          <h4>The key decision</h4>
+          <p>PIM's first preference was for Prowide to implement all the custom rules. The analysis showed this would only move the problem from DFP to Prowide: we would still be non-standard, just somewhere else.</p>
+          <div class="split">
+            <div class="no"><b>Option on the table</b>Move the custom rules into Prowide's converter. Feasible, but the shared layer stays non-standard.</div>
+            <div class="yes"><b>What I proposed</b>Prowide translates strictly by the standard. PIM owns its unique rules internally and retires them over time.</div>
+          </div>
+          <p>I walked PIM through the impact of both options. Once it was clear that the original approach wouldn't achieve the goal of the change, they agreed to the standards-first design.</p>
+
+          <h4>Delivery</h4>
+          <ul>
+            <li>The solution is <strong>in development</strong>.</li>
+            <li>I <strong>defined the testing strategy and validation metrics</strong> for the migration.</li>
+            <li>I <strong>built the test suites in Zephyr</strong> to confirm messages translate correctly and no data is lost.</li>
+          </ul>
+
+          <h4>Expected impact</h4>
+          <ul>
+            <li>Simpler, lower-risk yearly SWIFT releases, because the shared platform follows the standard.</li>
+            <li>New clients can onboard on standard formats, with no custom-format requests.</li>
+            <li>Each customisation sits with the team that needs it, which reduces dependencies on DFP.</li>
+          </ul>
+
+          <h4>What I learned</h4>
+          <blockquote>Solving the problem and moving the problem can look the same on a plan.</blockquote>
+          <p>The first solution on the table was technically feasible and the stakeholder wanted it, but it didn't serve the reason we started the project. Going back to <em>why</em> we were making the change gave me the clarity, and the confidence, to recommend something different and bring the team with me.</p>
+        </div>
+      </details>
+    </article>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head"><span class="num">03</span><h2>Projects</h2></div>
+    <div class="grid">
+      <div class="card">
+        <span class="kind">Product · Mockup</span>
+        <h3>Rupayeah</h3>
+        <p>An experiential personal-finance academy for kids and young adults, from demand validation to a website mockup, with the reasoning behind every design decision.</p>
+        <span class="status">Coming soon</span>
       </div>
-      <div class="sticker">
-        <span class="mark">04</span>
-        Age is just a weird numbers game. Your soul is permanently stuck at a fun 18.
+      <div class="card">
+        <span class="kind">Product teardown + PRD</span>
+        <h3>Teardown in progress</h3>
+        <p>A breakdown of a product I use every day: what works, what doesn't, and a PRD for the feature I'd build next.</p>
+        <span class="status">Coming soon</span>
+      </div>
+      <div class="card">
+        <span class="kind">Consulting case study</span>
+        <h3>Case study in progress</h3>
+        <p>A structured approach to a real business problem: framing, analysis, recommendation.</p>
+        <span class="status">Coming soon</span>
+      </div>
+      <div class="card">
+        <span class="kind">User research</span>
+        <h3>Research in progress</h3>
+        <p>Talking to real users, finding patterns, and turning insights into product decisions.</p>
+        <span class="status">Coming soon</span>
       </div>
     </div>
   </div>
 </section>
 
-<section>
+<section id="beyond">
   <div class="wrap">
-    <div class="section-head">
-      <h2>The evidence</h2>
-      <span class="tag">Proof you're still a kid</span>
+    <div class="section-head"><span class="num">04</span><h2>Beyond work</h2></div>
+    <div class="beyond">
+      <div class="card">
+        <div class="photo-slot">Add a fitness photo</div>
+        <span class="kind">Fitness</span>
+        <h3>Training with intent</h3>
+        <p>A line or two on what fitness means to you and what it's taught you.</p>
+      </div>
+      <div class="card">
+        <div class="photo-slot">Add a travel photo</div>
+        <span class="kind">Travel</span>
+        <h3>Collecting places</h3>
+        <p>A line or two on where you've been, where you're going, and why you travel.</p>
+      </div>
     </div>
-    <div class="exhibits">
-      <div class="exhibit">
-        <div class="letter">A</div>
-        <div>
-          <h3>The half-eaten plate</h3>
-          <p>You still can't finish your food. Not once. Not ever. A true child's move, and honestly kind of iconic.</p>
-          <span class="verdict">Case closed</span>
-        </div>
-      </div>
-      <div class="exhibit">
-        <div class="letter">B</div>
-        <div>
-          <h3>The terminal sprint</h3>
-          <p>Only someone with genuinely young energy chases a missed train or flight the way you do. Adults just rebook.</p>
-          <span class="verdict">No further questions</span>
-        </div>
-      </div>
-      <div class="exhibit">
-        <div class="letter">C</div>
-        <div>
-          <h3>The plot twists</h3>
-          <p>Strict plans are an old-person habit anyway. Your random, last-minute ideas keep everyone around you young too.</p>
-          <span class="verdict">Pattern confirmed</span>
-        </div>
-      </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's talk product.</h2>
+    <p>I'm open to Product Manager and Product Owner roles. If you're hiring or just want to swap notes, I'd love to hear from you.</p>
+    <div class="cta">
+      <a href="mailto:shubhadarevankar80@gmail.com" class="btn primary">Email me</a>
+      <a href="https://www.linkedin.com/in/shubhada-revankar-b242a5199" target="_blank" rel="noopener" class="btn">LinkedIn</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p class="signoff">with love, your <span>partner in crime</span> 🎈</p>
-  <p class="footer-note">happy 25th, Skii — go be brilliant.</p>
+  <div class="wrap">
+    <span>© 2026 Shubhada Revankar</span>
+    <span>shubhadarevankar.com</span>
+  </div>
 </footer>
-
-<script>
-  const candleCount = 5;
-  const candlesEl = document.getElementById('candles');
-  const wishLine = document.getElementById('wishLine');
-  let blownOut = 0;
-
-  for (let i = 0; i < candleCount; i++){
-    const btn = document.createElement('button');
-    btn.className = 'candle';
-    btn.setAttribute('aria-label', 'Blow out candle ' + (i + 1));
-    btn.innerHTML = '<span class="flame"></span><span class="smoke"></span><span class="stick"></span>';
-    btn.addEventListener('click', () => {
-      if (btn.classList.contains('out')) return;
-      btn.classList.add('out');
-      blownOut++;
-      if (blownOut === 1){
-        wishLine.textContent = "One down. Keep going.";
-      } else if (blownOut < candleCount){
-        wishLine.textContent = "Almost there...";
-      } else {
-        wishLine.textContent = "Wish sent. It's already coming true. 🎂";
-        launchConfetti();
-      }
-    });
-    candlesEl.appendChild(btn);
-  }
-
-  function launchConfetti(){
-    const colors = ['#F4C64B', '#FF6B57', '#C6B4D6', '#FAF0DE'];
-    for (let i = 0; i < 90; i++){
-      const piece = document.createElement('div');
-      piece.className = 'confetti';
-      piece.style.left = Math.random() * 100 + 'vw';
-      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-      piece.style.animationDuration = (2.5 + Math.random() * 2) + 's';
-      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-      document.body.appendChild(piece);
-      setTimeout(() => piece.remove(), 5000);
-    }
-  }
-</script>
 
 </body>
 </html>
